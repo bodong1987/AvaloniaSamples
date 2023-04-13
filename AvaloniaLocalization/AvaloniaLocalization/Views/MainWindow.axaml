@@ -1,0 +1,30 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaLocalization.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:ls="clr-namespace:AvaloniaLocalization.Services"		
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaLocalization.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaLocalization">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+		<ComboBox MinWidth="150" 
+				  Items="{Binding AvailableCultures}"
+				  SelectedItem="{Binding SelectedCulture}"
+				  ></ComboBox>
+
+		<Button Content="{ls:Localize File}"></Button>
+		<Button Content="{ls:Localize New}"></Button>
+
+		<TextBlock x:Name="textBlock_Code"></TextBlock>
+	</StackPanel>
+
+</Window>
