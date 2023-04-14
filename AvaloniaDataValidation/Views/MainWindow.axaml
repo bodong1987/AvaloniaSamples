@@ -16,10 +16,19 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-		<TextBlock VerticalAlignment="Center" Text="Email:"></TextBlock>
-	    <TextBox Width="250" Text="{Binding Email}"></TextBox>	
+	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+		<StackPanel Orientation="Horizontal">
+			<TextBlock VerticalAlignment="Center" Text="Email:"></TextBlock>
+			<TextBox Width="250" Text="{Binding Email}"></TextBox>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<TextBlock VerticalAlignment="Center" Text="Lauguage:"></TextBlock>
+			<ComboBox Items="{Binding CombItems}"
+					  SelectedItem="{Binding ProgramLanguage}"
+					  >				
+			</ComboBox>
+		</StackPanel>
 	</StackPanel>
-    
+
 
 </Window>
