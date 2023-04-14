@@ -28,6 +28,10 @@
 					  >				
 			</ComboBox>
 		</StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<TextBox x:Name="textBox_Errors" Width="250"></TextBox>
+			<Button Margin="5" Click="OnShowError">Show Error</Button>
+		</StackPanel>
 	</StackPanel>
 
 
