@@ -1,5 +1,6 @@
-.vscode
+﻿.vscode
 *.pyc
 .DS_Store
 .vs
 obj/
+net6.0/
