@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaDataValidation", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaLocalization", "AvaloniaLocalization\AvaloniaLocalization.csproj", "{3444C567-C232-4642-8346-5CC598B18C35}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaVisualStudioTitleBar", "AvaloniaVisualStudioTitleBar\AvaloniaVisualStudioTitleBar.csproj", "{956FD1FD-946E-4688-BD19-D675F1191221}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3444C567-C232-4642-8346-5CC598B18C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3444C567-C232-4642-8346-5CC598B18C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3444C567-C232-4642-8346-5CC598B18C35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956FD1FD-946E-4688-BD19-D675F1191221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956FD1FD-946E-4688-BD19-D675F1191221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956FD1FD-946E-4688-BD19-D675F1191221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956FD1FD-946E-4688-BD19-D675F1191221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

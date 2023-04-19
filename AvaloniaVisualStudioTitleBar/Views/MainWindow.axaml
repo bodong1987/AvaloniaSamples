@@ -1,0 +1,225 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaVisualStudioTitleBar.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaVisualStudioTitleBar.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="{Binding AppName}"
+		ExtendClientAreaToDecorationsHint="{Binding ModernStyle.ExtendClientAreaToDecorationsHint}"
+		ExtendClientAreaTitleBarHeightHint="{Binding ModernStyle.ExtendClientAreaTitleBarHeightHint}"
+		ExtendClientAreaChromeHints="{Binding ModernStyle.ExtendClientAreaChromeHints}"
+		>
+	<Grid RowDefinitions="Auto,*" ColumnDefinitions="1*,Auto,1*">
+		<Grid ColumnDefinitions="Auto, Auto, *,Auto">
+			<Image Grid.Column="0" IsVisible="{Binding ModernStyle.IsWindowsStyle}" Source="/Assets/avalonia-logo.ico" Width="24" Height="24" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" DoubleTapped="CloseWindow"></Image>
+			<StackPanel
+				Name="macButtonsStackPanel"
+				Orientation="Horizontal"
+				DockPanel.Dock="Left"
+				Grid.Column="0"
+				Spacing="6"
+				Margin="6,0,0,0"
+				IsVisible="{Binding ModernStyle.IsMacOSStyle}"
+				Background="Transparent">
+				<StackPanel.Styles>
+					<Style Selector="StackPanel:pointerover Path">
+						<Setter Property="IsVisible" Value="true"></Setter>
+					</Style>
+					<Style Selector="StackPanel:not(:pointerover) Path">
+						<Setter Property="IsVisible" Value="false"></Setter>
+					</Style>
+				</StackPanel.Styles>
+				<Button Name="macCloseButton"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						VerticalAlignment="Center"
+						Click="CloseWindow"
+						Width="16"
+						Height="16">
+					<Button.Resources>
+						<CornerRadius x:Key="ControlCornerRadius">12</CornerRadius>
+					</Button.Resources>
+					<Button.Styles>
+						<Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+							<Setter Property="Background" Value="#99FF5D55"/>
+						</Style>
+						<Style Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+							<Setter Property="Background" Value="#FF5D55"/>
+						</Style>
+					</Button.Styles>
+
+					<Path Data="M 0,0 l 10,10 M 0,10 l 10,-10"
+						  Stroke="#4C0102"
+						  StrokeThickness="1"
+						  Width="10"
+						  Height="10"></Path>
+				</Button>
+
+				<Button Name="macMinimizeButton"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						VerticalAlignment="Center"
+						Click="MinimizeWindow"
+						Width="16"
+						Height="16">
+					<Button.Resources>
+						<CornerRadius x:Key="ControlCornerRadius">12</CornerRadius>
+					</Button.Resources>
+					<Button.Styles>
+						<Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+							<Setter Property="Background" Value="#99FFBC2E"/>
+						</Style>
+						<Style Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+							<Setter Property="Background" Value="#FFBC2E"/>
+						</Style>
+					</Button.Styles>
+
+					<Path Data="M 0,0 l 12,0"
+						  Stroke="#985712"
+						  StrokeThickness="1"
+						  Width="12"
+						  Height="1"></Path>
+				</Button>
+
+				<Button Name="macZoomButton"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						VerticalAlignment="Center"
+						Click="MaximizeWindow"
+						Width="16"
+						Height="16">
+					<Button.Resources>
+						<CornerRadius x:Key="ControlCornerRadius">12</CornerRadius>
+					</Button.Resources>
+					<Button.Styles>
+						<Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+							<Setter Property="Background" Value="#9928C83E"/>
+						</Style>
+						<Style Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+							<Setter Property="Background" Value="#28C83E"/>
+						</Style>
+					</Button.Styles>
+
+					<Path Data="M 0,10 l 8,0 l -8,-8 l 0,8 M 10,0 l 0,8 l -8,-8 l 8,0"
+						  Fill="#0A630C"
+						  StrokeThickness="0"
+						  Width="10"
+						  Height="10"></Path>
+				</Button>
+			</StackPanel>
+
+			<Menu Name="sharedMainMenu" Grid.Column="1">
+				<MenuItem Header="File">
+					<MenuItem Header="New"></MenuItem>
+					<Separator/>
+					<MenuItem Header="Open"></MenuItem>					
+				</MenuItem>	
+			</Menu>
+
+			<Panel Grid.Column="2" IsVisible="{Binding ModernStyle.IsMacOSStyle}" IsHitTestVisible="False"></Panel>
+			<Image Grid.Column="3" IsVisible="{Binding ModernStyle.IsMacOSStyle}" IsHitTestVisible="False" Source="/Assets/avalonia-logo.ico" Width="24" Height="24" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right"></Image>
+		</Grid>
+
+		<StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+			<TextBlock Text="{Binding AppName}" IsVisible="{Binding !ModernStyle.IsClassicStyle}" IsHitTestVisible="False" VerticalAlignment="Center"></TextBlock>
+		</StackPanel>
+
+		<StackPanel IsVisible="{Binding ModernStyle.IsWindowsStyle}"
+					HorizontalAlignment="Right"
+					Orientation="Horizontal"
+					Spacing="0"
+					Grid.Column="2"
+					>
+			<Button Width="46"
+					Height="30"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					BorderThickness="0"
+					Name="winMinimizeButton"
+					Click="MinimizeWindow"
+					ToolTip.Tip="Minimize">
+				<Button.Resources>
+					<CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+				</Button.Resources>
+				<Button.Styles>
+					<Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="#44AAAAAA"/>
+					</Style>
+					<Style Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="Transparent"/>
+					</Style>
+				</Button.Styles>
+				<Path Margin="10,0,10,0"
+					  Stretch="Uniform"
+					  Fill="{DynamicResource SystemControlForegroundBaseHighBrush}"
+					  Data="M2048 1229v-205h-2048v205h2048z"></Path>
+			</Button>
+
+			<Button Width="46"
+					VerticalAlignment="Stretch"
+					VerticalContentAlignment="Center"
+					BorderThickness="0"
+					Click="MaximizeWindow"
+					Name="winMaximizeButton">
+				<ToolTip.Tip>
+					<ToolTip Content="Maximize"
+							 Name="MaximizeToolTip"></ToolTip>
+				</ToolTip.Tip>
+
+				<Button.Resources>
+					<CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+				</Button.Resources>
+				<Button.Styles>
+					<Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="#44AAAAAA"/>
+					</Style>
+					<Style Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="Transparent"/>
+					</Style>
+				</Button.Styles>
+				<Path Margin="10,0,10,0"
+					  Stretch="Uniform"
+					  Fill="{DynamicResource SystemControlForegroundBaseHighBrush}"
+					  Name="winMaximizeIcon"
+					  Data="M2048 2048v-2048h-2048v2048h2048zM1843 1843h-1638v-1638h1638v1638z"></Path>
+			</Button>
+
+			<Button Width="46"
+					VerticalAlignment="Stretch"
+					VerticalContentAlignment="Center"
+					BorderThickness="0"
+					Name="winCloseButton"
+					Click="CloseWindow"
+					Grid.Column="0"
+					ToolTip.Tip="Close">
+				<Button.Resources>
+					<CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+				</Button.Resources>
+				<Button.Styles>
+					<Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="Red"/>
+					</Style>
+					<Style Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="Transparent"/>
+					</Style>
+					<Style Selector="Button:pointerover > Path">
+						<Setter Property="Fill" Value="White"/>
+					</Style>
+					<Style Selector="Button:not(:pointerover) > Path">
+						<Setter Property="Fill" Value="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
+					</Style>
+				</Button.Styles>
+				<Path Margin="10,0,10,0"
+					  Stretch="Uniform"
+					  Data="M1169 1024l879 -879l-145 -145l-879 879l-879 -879l-145 145l879 879l-879 879l145 145l879 -879l879 879l145 -145z"></Path>
+			</Button>
+		</StackPanel>
+
+		<ComboBox Grid.Row="1" Grid.Column="1" Width="250" Items="{Binding Styles}" SelectedItem="{Binding Style}">
+			
+		</ComboBox>
+	</Grid>
+
+</Window>
