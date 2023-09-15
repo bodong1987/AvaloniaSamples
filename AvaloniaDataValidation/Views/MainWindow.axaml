@@ -23,7 +23,7 @@
 		</StackPanel>
 		<StackPanel Orientation="Horizontal">
 			<TextBlock VerticalAlignment="Center" Text="Lauguage:"></TextBlock>
-			<ComboBox Items="{Binding CombItems}"
+			<ComboBox ItemsSource="{Binding CombItems}"
 					  SelectedItem="{Binding ProgramLanguage}"
 					  >				
 			</ComboBox>

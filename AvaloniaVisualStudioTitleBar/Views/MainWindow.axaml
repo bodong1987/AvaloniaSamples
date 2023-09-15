@@ -35,7 +35,7 @@
 						HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
 						VerticalAlignment="Center"
-						Click="CloseWindow"
+						Click="CloseWindow2"
 						Width="16"
 						Height="16">
 					<Button.Resources>
@@ -191,7 +191,7 @@
 					VerticalContentAlignment="Center"
 					BorderThickness="0"
 					Name="winCloseButton"
-					Click="CloseWindow"
+					Click="CloseWindow2"
 					Grid.Column="0"
 					ToolTip.Tip="Close">
 				<Button.Resources>
@@ -217,7 +217,7 @@
 			</Button>
 		</StackPanel>
 
-		<ComboBox Grid.Row="1" Grid.Column="1" Width="250" Items="{Binding Styles}" SelectedItem="{Binding Style}">
+		<ComboBox Grid.Row="1" Grid.Column="1" Width="250" ItemsSource="{Binding Styles}" SelectedItem="{Binding Style}">
 			
 		</ComboBox>
 	</Grid>

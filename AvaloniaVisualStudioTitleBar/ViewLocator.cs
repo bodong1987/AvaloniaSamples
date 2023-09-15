@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using AvaloniaVisualStudioTitleBar.ViewModels;
 using System;
@@ -7,7 +7,7 @@ namespace AvaloniaVisualStudioTitleBar
 {
     public class ViewLocator : IDataTemplate
     {
-        public IControl Build(object data)
+        public Control Build(object data)
         {
             var name = data.GetType().FullName!.Replace("ViewModel", "View");
             var type = Type.GetType(name);

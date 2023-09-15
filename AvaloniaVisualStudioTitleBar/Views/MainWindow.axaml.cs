@@ -11,6 +11,7 @@ using System.Text;
 using Avalonia.Media;
 using System.Threading.Tasks;
 using AvaloniaVisualStudioTitleBar.ViewModels;
+using Avalonia.Input;
 
 namespace AvaloniaVisualStudioTitleBar.Views
 {
@@ -27,7 +28,12 @@ namespace AvaloniaVisualStudioTitleBar.Views
             SubscribeToWindowState();
         }
 
-        private void CloseWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void CloseWindow(object sender, TappedEventArgs e)
+        {
+            CloseWindow2(sender, e);
+        }
+
+        private void CloseWindow2(object sender, RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;
             hostWindow.Close();

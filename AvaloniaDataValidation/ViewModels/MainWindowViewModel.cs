@@ -43,7 +43,7 @@ namespace AvaloniaDataValidation.ViewModels
 
     internal class LaungageValidationAttribute : ValidationAttribute
     {
-        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if(value is string lan)
             {
