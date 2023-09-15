@@ -7,6 +7,10 @@ I would be very happy if these examples help you.
 
 just open .sln with Visual Studio, and compile it with Debug configuration.
 
+```
+If you need examples of older versions, such as v10, you can find them in Tag.
+```
+
 ## AvaloniaDataValidation
     show base data validation usage and force set error info in codes.
 
