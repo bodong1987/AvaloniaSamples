@@ -29,5 +29,7 @@ MacOS
 ![classic](./Images/vstitlebar_classic.png)
 Classic   
 
+## AvaloniaChangeTheme
+    Shows how to dynamically switch themes and theme colors in Avalonia 11  
 
 

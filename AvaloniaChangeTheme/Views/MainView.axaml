@@ -1,0 +1,37 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaChangeTheme.ViewModels"
+             xmlns:lv="using:AvaloniaChangeTheme.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaChangeTheme.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+    <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Themes" Padding="2" ></TextBlock>
+        <ComboBox x:Name="ThemeBox" Width="125" Padding="4" SelectedIndex="0">
+            <ComboBox.Items>
+                <lv:ThemeType>Fluent</lv:ThemeType>
+                <lv:ThemeType>Simple</lv:ThemeType>
+            </ComboBox.Items>
+        </ComboBox>
+        <TextBlock Text="Styles"  Padding="2"></TextBlock>
+        <ComboBox x:Name="ThemeVariantsBox"
+                  Width="125"
+                  Padding="4"
+                  DisplayMemberBinding="{Binding Key, x:DataType=ThemeVariant}"
+                  SelectedIndex="0">
+            <ComboBox.Items>
+                <ThemeVariant>Default</ThemeVariant>
+                <ThemeVariant>Light</ThemeVariant>
+                <ThemeVariant>Dark</ThemeVariant>
+            </ComboBox.Items>
+        </ComboBox>
+    </StackPanel>
+</UserControl>
