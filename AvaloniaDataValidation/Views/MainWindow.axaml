@@ -16,23 +16,43 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
+    <Window.Styles>
+        <Style Selector="Border.thin">
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="0.5" />
+            <Setter Property="CornerRadius" Value="0,0,5,5" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+        </Style>
+
+    </Window.Styles>
+
 	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
-		<StackPanel Orientation="Horizontal">
-			<TextBlock VerticalAlignment="Center" Text="Email:"></TextBlock>
-			<TextBox Width="250" Text="{Binding Email}"></TextBox>
-		</StackPanel>
-		<StackPanel Orientation="Horizontal">
-			<TextBlock VerticalAlignment="Center" Text="Lauguage:"></TextBlock>
-			<ComboBox ItemsSource="{Binding CombItems}"
-					  SelectedItem="{Binding ProgramLanguage}"
-					  >				
-			</ComboBox>
-		</StackPanel>
-		<StackPanel Orientation="Horizontal">
-			<TextBox x:Name="textBox_Errors" Width="250"></TextBox>
-			<Button Margin="5" Click="OnShowError">Show Error</Button>
-		</StackPanel>
-	</StackPanel>
+        <Border Classes="thin" Padding="8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="8" VerticalAlignment="Center" Text="Email:"></TextBlock>
+                <TextBox Margin="8" Width="250" Text="{Binding Email}"></TextBox>
+            </StackPanel>    
+        </Border>
+
+        <Border Classes="thin" Padding="8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="8" VerticalAlignment="Center" Text="Lauguage:"></TextBlock>
+                <ComboBox ItemsSource="{Binding CombItems}"
+                          SelectedItem="{Binding ProgramLanguage}"
+                          Margin="8"
+					  >
+                </ComboBox>
+            </StackPanel>
+        </Border>
+
+        <Border Classes="thin" Padding="8">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Margin="8" x:Name="textBox_Errors" Width="250"></TextBox>
+                <Button Margin="8" Click="OnShowError">Show Error</Button>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
 
 
 </Window>

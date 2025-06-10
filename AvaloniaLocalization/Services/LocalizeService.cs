@@ -89,7 +89,8 @@ namespace AvaloniaLocalization.Services
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
             string directory = Path.GetDirectoryName(assemblyPath);
 
-            var locDirectory = Path.Combine(directory, "assets/localization");
+            // you can also load from avares by uri ...
+            var locDirectory = Path.Combine(directory, "../../../Assets/localization");
             CultureInfoData currentInfo = null;
 
             if (Directory.Exists(locDirectory))

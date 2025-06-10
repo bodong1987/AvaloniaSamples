@@ -13,25 +13,27 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-    <StackPanel Orientation="Horizontal">
-        <TextBlock Text="Themes" Padding="2" ></TextBlock>
-        <ComboBox x:Name="ThemeBox" Width="125" Padding="4" SelectedIndex="0">
-            <ComboBox.Items>
-                <lv:ThemeType>Fluent</lv:ThemeType>
-                <lv:ThemeType>Simple</lv:ThemeType>
-            </ComboBox.Items>
-        </ComboBox>
-        <TextBlock Text="Styles"  Padding="2"></TextBlock>
-        <ComboBox x:Name="ThemeVariantsBox"
-                  Width="125"
-                  Padding="4"
-                  DisplayMemberBinding="{Binding Key, x:DataType=ThemeVariant}"
-                  SelectedIndex="0">
-            <ComboBox.Items>
-                <ThemeVariant>Default</ThemeVariant>
-                <ThemeVariant>Light</ThemeVariant>
-                <ThemeVariant>Dark</ThemeVariant>
-            </ComboBox.Items>
-        </ComboBox>
-    </StackPanel>
+    <Grid RowDefinitions="Auto,*">
+        <StackPanel Orientation="Horizontal" Margin="16">
+            <TextBlock Text="Themes" Margin="8" VerticalAlignment="Center" ></TextBlock>
+            <ComboBox x:Name="ThemeBox" Width="125" Margin="8" SelectedIndex="0">
+                <ComboBox.Items>
+                    <lv:ThemeType>Fluent</lv:ThemeType>
+                    <lv:ThemeType>Simple</lv:ThemeType>
+                </ComboBox.Items>
+            </ComboBox>
+            <TextBlock Text="Styles"  Margin="8" VerticalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="ThemeVariantsBox"
+                      Width="125"
+                      Margin="8"
+                      DisplayMemberBinding="{Binding Key, x:DataType=ThemeVariant}"
+                      SelectedIndex="0">
+                <ComboBox.Items>
+                    <ThemeVariant>Default</ThemeVariant>
+                    <ThemeVariant>Light</ThemeVariant>
+                    <ThemeVariant>Dark</ThemeVariant>
+                </ComboBox.Items>
+            </ComboBox>
+        </StackPanel>
+    </Grid>        
 </UserControl>
