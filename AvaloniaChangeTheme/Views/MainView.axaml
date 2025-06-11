@@ -14,26 +14,40 @@
   </Design.DataContext>
 
     <Grid RowDefinitions="Auto,*">
-        <StackPanel Orientation="Horizontal" Margin="16">
-            <TextBlock Text="Themes" Margin="8" VerticalAlignment="Center" ></TextBlock>
-            <ComboBox x:Name="ThemeBox" Width="125" Margin="8" SelectedIndex="0">
-                <ComboBox.Items>
-                    <lv:ThemeType>Fluent</lv:ThemeType>
-                    <lv:ThemeType>Simple</lv:ThemeType>
-                </ComboBox.Items>
-            </ComboBox>
-            <TextBlock Text="Styles"  Margin="8" VerticalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="ThemeVariantsBox"
-                      Width="125"
-                      Margin="8"
-                      DisplayMemberBinding="{Binding Key, x:DataType=ThemeVariant}"
-                      SelectedIndex="0">
-                <ComboBox.Items>
-                    <ThemeVariant>Default</ThemeVariant>
-                    <ThemeVariant>Light</ThemeVariant>
-                    <ThemeVariant>Dark</ThemeVariant>
-                </ComboBox.Items>
-            </ComboBox>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="16">
+                <TextBlock Text="Themes" Margin="8" VerticalAlignment="Center" ></TextBlock>
+                <ComboBox x:Name="ThemeBox" Width="125" Margin="8" SelectedIndex="0">
+                    <ComboBox.Items>
+                        <lv:ThemeType>Fluent</lv:ThemeType>
+                        <lv:ThemeType>Simple</lv:ThemeType>
+                    </ComboBox.Items>
+                </ComboBox>
+                <TextBlock Text="Styles"  Margin="8" VerticalAlignment="Center"></TextBlock>
+                <ComboBox x:Name="ThemeVariantsBox"
+                          Width="125"
+                          Margin="8"
+                          DisplayMemberBinding="{Binding Key, x:DataType=ThemeVariant}"
+                          SelectedIndex="0">
+                    <ComboBox.Items>
+                        <ThemeVariant>Default</ThemeVariant>
+                        <ThemeVariant>Light</ThemeVariant>
+                        <ThemeVariant>Dark</ThemeVariant>
+                    </ComboBox.Items>
+                </ComboBox>                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="True" Margin="16">
+                    <CheckBox.Content>
+                        CheckBox
+                    </CheckBox.Content>
+                </CheckBox>                                
+                <ToggleSwitch Margin="16"></ToggleSwitch>
+                <Button Content="Button Test" Margin="16"></Button>
+            </StackPanel>
+            <ProgressBar Value="50"></ProgressBar>
+            <Slider Value="75"></Slider>
+            <Calendar HorizontalAlignment="Center"></Calendar>
         </StackPanel>
-    </Grid>        
+   </Grid>        
 </UserControl>
