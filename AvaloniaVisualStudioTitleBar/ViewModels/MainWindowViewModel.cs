@@ -415,8 +415,8 @@ namespace AvaloniaVisualStudioTitleBar.ViewModels
             {
                 if (IsMacOSStyle || IsWindowsStyle)
                 {
-                    // v12: replace ExtendClientAreaChromeHints.NoChrome with WindowDecorations.None
-                    WindowDecorations = WindowDecorations.None;
+                    // v12: replace ExtendClientAreaChromeHints.NoChrome with WindowDecorations.BorderOnly
+                    WindowDecorations = WindowDecorations.BorderOnly;
                     ExtendClientAreaTitleBarHeightHint = -1;
                     ExtendClientAreaToDecorationsHint = true;
                 }
