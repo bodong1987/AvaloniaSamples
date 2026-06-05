@@ -1,4 +1,5 @@
-﻿using Avalonia.Platform;
+﻿using Avalonia.Controls;
+using Avalonia.Platform;
 using System.ComponentModel;
 using System;
 using System.Collections.Generic;
@@ -332,18 +333,18 @@ namespace AvaloniaVisualStudioTitleBar.ViewModels
         }
 
         /// <summary>
-        /// The extend client area chrome hints core
+        /// The window decorations core (Avalonia v12 replacement for ExtendClientAreaChromeHints).
         /// </summary>
-        ExtendClientAreaChromeHints ExtendClientAreaChromeHintsCore = ExtendClientAreaChromeHints.Default;
+        WindowDecorations WindowDecorationsCore = WindowDecorations.Full;
 
         /// <summary>
-        /// Gets or sets the extend client area chrome hints.
+        /// Gets or sets the window decorations.
         /// </summary>
-        /// <value>The extend client area chrome hints.</value>
-        public ExtendClientAreaChromeHints ExtendClientAreaChromeHints
+        /// <value>The window decorations.</value>
+        public WindowDecorations WindowDecorations
         {
-            get => ExtendClientAreaChromeHintsCore;
-            set => this.RaiseAndSetIfChanged(ref ExtendClientAreaChromeHintsCore, value);
+            get => WindowDecorationsCore;
+            set => this.RaiseAndSetIfChanged(ref WindowDecorationsCore, value);
         }
 
         /// <summary>
@@ -414,13 +415,15 @@ namespace AvaloniaVisualStudioTitleBar.ViewModels
             {
                 if (IsMacOSStyle || IsWindowsStyle)
                 {
-                    ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.NoChrome;
+                    // v12: replace ExtendClientAreaChromeHints.NoChrome with WindowDecorations.None
+                    WindowDecorations = WindowDecorations.None;
                     ExtendClientAreaTitleBarHeightHint = -1;
                     ExtendClientAreaToDecorationsHint = true;
                 }
                 else
                 {
-                    ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.Default;
+                    // v12: replace ExtendClientAreaChromeHints.Default with WindowDecorations.Full
+                    WindowDecorations = WindowDecorations.Full;
                     ExtendClientAreaTitleBarHeightHint = 0;
                     ExtendClientAreaToDecorationsHint = false;
                 }

@@ -5,13 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaVisualStudioTitleBar.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="{Binding AppName}"
 		ExtendClientAreaToDecorationsHint="{Binding ModernStyle.ExtendClientAreaToDecorationsHint}"
 		ExtendClientAreaTitleBarHeightHint="{Binding ModernStyle.ExtendClientAreaTitleBarHeightHint}"
-		ExtendClientAreaChromeHints="{Binding ModernStyle.ExtendClientAreaChromeHints}"
+		WindowDecorations="{Binding ModernStyle.WindowDecorations}"
 		>
 	<Grid RowDefinitions="Auto,*" ColumnDefinitions="1*,Auto,1*">
+		<!-- 横跨整行的透明拖拽层：所有未被按钮/菜单消费的指针事件都会落到这里 -->
+		<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+				Background="Transparent"
+				PointerPressed="TitleBar_PointerPressed"
+				PointerMoved="TitleBar_PointerMoved"
+				PointerReleased="TitleBar_PointerReleased"
+				PointerCaptureLost="TitleBar_PointerCaptureLost"
+				DoubleTapped="TitleBar_DoubleTapped"/>
+
 		<Grid ColumnDefinitions="Auto, Auto, *,Auto">
 			<Image Grid.Column="0" IsVisible="{Binding ModernStyle.IsWindowsStyle}" Source="/Assets/avalonia-logo.ico" Width="24" Height="24" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" DoubleTapped="CloseWindow"></Image>
 			<StackPanel
@@ -122,8 +132,8 @@
 			<Image Grid.Column="3" IsVisible="{Binding ModernStyle.IsMacOSStyle}" IsHitTestVisible="False" Source="/Assets/avalonia-logo.ico" Width="24" Height="24" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right"></Image>
 		</Grid>
 
-		<StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-			<TextBlock Text="{Binding AppName}" IsVisible="{Binding !ModernStyle.IsClassicStyle}" IsHitTestVisible="False" VerticalAlignment="Center"></TextBlock>
+		<StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" IsHitTestVisible="False">
+			<TextBlock Text="{Binding AppName}" IsVisible="{Binding !ModernStyle.IsClassicStyle}" VerticalAlignment="Center"></TextBlock>
 		</StackPanel>
 
 		<StackPanel IsVisible="{Binding ModernStyle.IsWindowsStyle}"
